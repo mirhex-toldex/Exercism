@@ -26,15 +26,15 @@ Learn about Guido, the creator of the Python language: https://en.wikipedia.org/
 ################################################################################################################
 
 
-#TODO: define the 'EXPECTED_BAKE_TIME' constant below.
+
+EXPECTED_BAKE_TIME = 40
+PREPARATION_TIME = 2
 
 
-#TODO: consider defining a 'PREPARATION_TIME' constant
-#       equal to the time it takes to prepare a single layer.
 
 
-#TODO: Remove 'pass' and complete the 'bake_time_remaining()' function below.
-def bake_time_remaining():
+
+def bake_time_remaining(elapsed_bake_time):
     """Calculate the bake time remaining.
 
     :param elapsed_bake_time: int - baking time already elapsed.
@@ -44,15 +44,31 @@ def bake_time_remaining():
     an argument and returns how many minutes the lasagna still needs to bake
     based on the `EXPECTED_BAKE_TIME`.
     """
-
-    pass
-
-
-#TODO: Define the 'preparation_time_in_minutes()' function below.
-# Remember to add a docstring (you can copy and then alter the one from bake_time_remaining.)
-# You might also consider using 'PREPARATION_TIME' here, if you have it defined.
+    return EXPECTED_BAKE_TIME - elapsed_bake_time
+    
 
 
 
-#TODO: define the 'elapsed_time_in_minutes()' function below.
-# Remember to add a docstring (you can copy and then alter the one from bake_time_remaining.)
+
+def preparation_time_in_minutes(number_of_layers):
+    """Calculate the bake time for layers.
+
+    :param number_of_layers: int - number of layers.
+    :return: int - preparation time for all layers.
+
+    Function that calcs prep time for layers.
+    """
+    return number_of_layers * PREPARATION_TIME
+
+
+
+def elapsed_time_in_minutes(number_of_layers, elapsed_bake_time):
+    """Calculate elapsed bake time
+
+    :param number_of_layers: int - number of layers.
+    :param elapsed_bake_time: int - elapsed bake time.
+    :return: int - total cooking time.
+
+    Function that calcs total cooking time.
+    """
+    return preparation_time_in_minutes(number_of_layers) + elapsed_bake_time
