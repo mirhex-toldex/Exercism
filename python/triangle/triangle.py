@@ -1,5 +1,8 @@
 def equilateral(sides):
-    pass
+    if sides == sides:
+        return True
+    else:
+        return False
 
 
 def isosceles(sides):
