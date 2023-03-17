@@ -7,8 +7,7 @@ def add_prefix_un(word):
     :param word: str - containing the root word.
     :return: str - of root word prepended with 'un'.
     """
-
-    pass
+    return "un" + word
 
 
 def make_word_groups(vocab_words):
@@ -25,8 +24,27 @@ def make_word_groups(vocab_words):
     For example: list('en', 'close', 'joy', 'lighten'),
     produces the following string: 'en :: enclose :: enjoy :: enlighten'.
     """
+    n = 1 
+    # str = ''
+    list_length = len(vocab_words)
+    new_list = [vocab_words[0], ' :: ']
+    
+    for x in vocab_words:
+        if n < list_length-1:
+            new_list += [vocab_words[0] + vocab_words[n], ' :: ']
+            n += 1
+        else:
+            new_list += [vocab_words[0] + vocab_words[n]] #why did adding a str or changing to brackets help adding to this to the list
+            break
+    # print(new_list)
+    str = ''.join(new_list) #wtf is this .join function and it has to have something empty for it to go into?
+    # print(str)
 
-    pass
+    # prefix = vocab_words[0]
+    # first_word = vocab_words[1]
+    # n = len(vocab_words)
+    # last_word = vocab_words[n-1]   
+    return str
 
 
 def remove_suffix_ness(word):
@@ -37,8 +55,16 @@ def remove_suffix_ness(word):
 
     For example: "heaviness" becomes "heavy", but "sadness" becomes "sad".
     """
+    word_length = len(word)
+    new_word = word[0:word_length-4]
+    new_length = len(new_word)
 
-    pass
+    if 'i' == new_word[new_length-1]:
+        new_word = new_word.replace('i', 'y')
+
+    return new_word
+
+    
 
 
 def adjective_to_verb(sentence, index):
@@ -50,5 +76,32 @@ def adjective_to_verb(sentence, index):
 
     For example, ("It got dark as the sun set", 2) becomes "darken".
     """
+    list = sentence.split(' ')
+    word = list[index]
+    length = len(word)
+    if word[length-1] == '.':
+        verb = word.replace('.', 'en')
+    else: 
+        verb = word + 'en'
+    
+    # word = ''
+    # n = 0
 
-    pass
+    # for x in list:
+    #     word += list[index-n]
+    #     n += 1
+    #     print(word)
+    #     if list[index-n] == ' ':
+    #         break
+
+    # print(word)
+    return verb
+
+
+
+
+
+# vocab_words = ['en', 'circle', 'fold', 'close', 'joy', 'lighten', 'tangle', 'able', 'code', 'culture']
+# make_word_groups(vocab_words)
+# remove_suffix_ness('heaviness')
+adjective_to_verb('His expression went dark.', -1)
